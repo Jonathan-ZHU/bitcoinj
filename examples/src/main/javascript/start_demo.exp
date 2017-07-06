@@ -1,0 +1,3 @@
+#!/usr/bin/expect -f 
+spawn jjs -cp ./bitcoinj-core-0.14.4-bundled.jar ./demo.js
+interact
