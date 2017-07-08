@@ -117,8 +117,8 @@ public class Block extends Message {
         super(params);
         // Set up a few basic things. We are not complete after this though.
         version = setVersion;
-        difficultyTarget = 0x1d07fff8L;
-        time = System.currentTimeMillis() / 1000;
+        difficultyTarget = 0xffffffffL; //MBC Jonathan not necessary
+         time = System.currentTimeMillis() / 1000;
         prevBlockHash = Sha256Hash.ZERO_HASH;
 
         length = HEADER_SIZE;
@@ -528,7 +528,9 @@ public class Block extends Message {
      */
     public BigInteger getDifficultyTargetAsInteger() throws VerificationException {
         BigInteger target = Utils.decodeCompactBits(difficultyTarget);
-        if (target.signum() <= 0 || target.compareTo(params.maxTarget) > 0)
+        if (target.signum() <= 0
+               // || target.compareTo(params.maxTarget) > 0 //MBC Jonathan
+                )
             throw new VerificationException("Difficulty target is bad: " + target.toString());
         return target;
     }

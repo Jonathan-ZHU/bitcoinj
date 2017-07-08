@@ -20,6 +20,7 @@ package org.bitcoinj.params;
 import org.bitcoinj.core.*;
 import org.bitcoinj.net.discovery.*;
 
+import java.math.BigInteger;
 import java.net.*;
 
 import static com.google.common.base.Preconditions.*;
@@ -36,7 +37,7 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         super();
         interval = INTERVAL;
         targetTimespan = TARGET_TIMESPAN;
-        maxTarget = Utils.decodeCompactBits(0x1d00ffffL);
+        maxTarget = Utils.decodeCompactBits(0x1f00ffffL); //MBC Jonathan
         //dumpedPrivateKeyHeader = 128;
         //addressHeader = 0;
         //p2shHeader = 5;

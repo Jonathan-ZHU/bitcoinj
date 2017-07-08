@@ -78,10 +78,13 @@ public abstract class  AbstractBitcoinNetParams extends NetworkParameters {
 
     @Override
     public void checkDifficultyTransitions(final StoredBlock storedPrev, final Block nextBlock,
-    	final BlockStore blockStore) throws VerificationException, BlockStoreException {
+                                           final BlockStore blockStore) throws VerificationException, BlockStoreException {
         final Block prev = storedPrev.getHeader();
 
         // Is this supposed to be a difficulty transition point?
+
+        //MBC Jonathan I deleted these code 'cause my MBC normal block's difficulty is different from the gisiens.
+
         if (!isDifficultyTransitionPoint(storedPrev.getHeight())) {
 
             // No ... so check the difficulty didn't actually change.
@@ -121,7 +124,6 @@ public abstract class  AbstractBitcoinNetParams extends NetworkParameters {
             timespan = targetTimespan / 4;
         if (timespan > targetTimespan * 4)
             timespan = targetTimespan * 4;
-
         BigInteger newTarget = Utils.decodeCompactBits(prev.getDifficultyTarget());
         newTarget = newTarget.multiply(BigInteger.valueOf(timespan));
         newTarget = newTarget.divide(BigInteger.valueOf(targetTimespan));
@@ -138,7 +140,7 @@ public abstract class  AbstractBitcoinNetParams extends NetworkParameters {
         BigInteger mask = BigInteger.valueOf(0xFFFFFFL).shiftLeft(accuracyBytes * 8);
         newTarget = newTarget.and(mask);
         long newTargetCompact = Utils.encodeCompactBits(newTarget);
-
+        log.warn(Long.toHexString(newTargetCompact) + " vs " + Long.toHexString(receivedTargetCompact));
         if (newTargetCompact != receivedTargetCompact)
             throw new VerificationException("Network provided difficulty bits do not match what was calculated: " +
                     Long.toHexString(newTargetCompact) + " vs " + Long.toHexString(receivedTargetCompact));
