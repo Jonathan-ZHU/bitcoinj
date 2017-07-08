@@ -43,7 +43,7 @@ import org.bitcoinj.core.BitcoinSerializer;
 /**
  * Parameters for Bitcoin-like networks.
  */
-public abstract class AbstractBitcoinNetParams extends NetworkParameters {
+public abstract class  AbstractBitcoinNetParams extends NetworkParameters {
 
     /**
      * Scheme part for Bitcoin URIs.
