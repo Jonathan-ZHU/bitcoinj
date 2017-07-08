@@ -82,8 +82,8 @@ public class PeerGroup implements TransactionBroadcaster {
      * were only sending transactions to two peers and sometimes this wasn't reliable enough: transactions wouldn't
      * get through.
      */
-    public static final int DEFAULT_CONNECTIONS = 12;
-    private volatile int vMaxPeersToDiscoverCount = 100;
+    public static final int DEFAULT_CONNECTIONS = 2; //MBC Jonathan
+    private volatile int vMaxPeersToDiscoverCount = 2; //MBC Jonathan
     private static final long DEFAULT_PEER_DISCOVERY_TIMEOUT_MILLIS = 5000;
     private volatile long vPeerDiscoveryTimeoutMillis = DEFAULT_PEER_DISCOVERY_TIMEOUT_MILLIS;
 
@@ -427,6 +427,7 @@ public class PeerGroup implements TransactionBroadcaster {
     private Runnable triggerConnectionsJob = new Runnable() {
         private boolean firstRun = true;
         private final static long MIN_PEER_DISCOVERY_INTERVAL = 1000L;
+        //private final static long MIN_PEER_DISCOVERY_INTERVAL = 2L; //MBC Jonathan
 
         @Override
         public void run() {
@@ -486,6 +487,8 @@ public class PeerGroup implements TransactionBroadcaster {
                 }
                 // Inactives is sorted by backoffMap time.
                 if (inactives.isEmpty()) {
+                    log.info(String.valueOf(countConnectedAndPendingPeers()));
+                    log.info(String.valueOf(getMaxConnections()));
                     if (countConnectedAndPendingPeers() < getMaxConnections()) {
                         long interval = Math.max(groupBackoff.getRetryTime() - now, MIN_PEER_DISCOVERY_INTERVAL);
                         log.info("Peer discovery didn't provide us any more peers, will try again in "

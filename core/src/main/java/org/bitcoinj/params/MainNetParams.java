@@ -40,14 +40,14 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         //dumpedPrivateKeyHeader = 128;
         //addressHeader = 0;
         //p2shHeader = 5;
-	dumpedPrivateKeyHeader = 65;//MBC Jonathan
+	    dumpedPrivateKeyHeader = 65;//MBC Jonathan
         addressHeader = 43;// MBC Jonahtan
         p2shHeader = 53;// MBC Jonathan
         acceptableAddressCodes = new int[] { addressHeader, p2shHeader };
         //port = 8333;
         //packetMagic = 0xf9beb4d9L;
-	port = 10086; //MBC Jonathan
-	packetMagic = 0x900d2333L; // MBC Jonathan
+	    port = 10086; //MBC Jonathan
+	    packetMagic = 0x900d2333L; // MBC Jonathan
         bip32HeaderPub = 0x0488B21E; //The 4 byte header that serializes in base58 to "xpub".
         bip32HeaderPriv = 0x0488ADE4; //The 4 byte header that serializes in base58 to "xprv"
 
@@ -58,18 +58,18 @@ public class MainNetParams extends AbstractBitcoinNetParams {
         genesisBlock.setDifficultyTarget(0x1d00ffffL);
         //genesisBlock.setTime(1231006505L);
         //genesisBlock.setNonce(2083236893);
-	genesisBlock.setTime(1411666331L);//MBC Jonathan
+	    genesisBlock.setTime(1411666331L);//MBC Jonathan
         genesisBlock.setNonce(2056985438);//MBC Jonathan
         id = ID_MAINNET;
         //subsidyDecreaseBlockCount = 210000;
         subsidyDecreaseBlockCount = 50000000;//MBC Jonathan
         
-	spendableCoinbaseDepth = 100;
+	    spendableCoinbaseDepth = 100;
         String genesisHash = genesisBlock.getHashAsString();
         //checkState(genesisHash.equals("000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f"),
                // genesisHash);
 
-        checkState(genesisHash.equals("0x0000000061b1aca334b059920fed7bace2336ea4d23d63428c7aee04da49e942"),
+        checkState(genesisHash.equals("0000000061b1aca334b059920fed7bace2336ea4d23d63428c7aee04da49e942"),
                 genesisHash);//MBC Jonathan
 
         // This contains (at a minimum) the blocks which are not BIP30 compliant. BIP30 changed how duplicate

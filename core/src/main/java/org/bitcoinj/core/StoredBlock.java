@@ -16,6 +16,7 @@
 
 package org.bitcoinj.core;
 
+import jdk.internal.instrumentation.Logger;
 import org.bitcoinj.store.BlockStore;
 import org.bitcoinj.store.BlockStoreException;
 import com.google.common.base.Objects;
@@ -136,7 +137,7 @@ public class StoredBlock {
         byte[] chainWorkBytes = new byte[StoredBlock.CHAIN_WORK_BYTES];
         buffer.get(chainWorkBytes);
         BigInteger chainWork = new BigInteger(1, chainWorkBytes);
-        int height = buffer.getInt();  // +4 bytes
+        int height = buffer.getInt();  // log+4 bytes
         byte[] header = new byte[Block.HEADER_SIZE + 1];    // Extra byte for the 00 transactions length.
         buffer.get(header, 0, Block.HEADER_SIZE);
         return new StoredBlock(params.getDefaultSerializer().makeBlock(header), chainWork, height);

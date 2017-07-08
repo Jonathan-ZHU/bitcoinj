@@ -72,7 +72,7 @@ public class Block extends Message {
      * expensive/slow to verify.
      */
     public static final int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE / 50;
-
+    //public static final int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE / 100;
     /** A value for difficultyTarget (nBits) that allows half of all possible hash solutions. Used in unit testing. */
     public static final long EASIEST_DIFFICULTY_TARGET = 0x207fFFFFL;
 
@@ -405,6 +405,7 @@ public class Block extends Message {
     private Sha256Hash calculateHash() {
         try {
             ByteArrayOutputStream bos = new UnsafeByteArrayOutputStream(HEADER_SIZE);
+            System.out.print(bos.toString());
             writeHeader(bos);
             return Sha256Hash.wrapReversed(Sha256Hash.hashTwice(bos.toByteArray()));
         } catch (IOException e) {

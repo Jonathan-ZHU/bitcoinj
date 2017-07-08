@@ -142,9 +142,9 @@ public class Main extends Application {
         };
         // Now configure and start the appkit. This will take a second or two - we could show a temporary splash screen
         // or progress widget to keep the user engaged whilst we initialise, but we don't.
-        if (params == RegTestParams.get()) {
-            bitcoin.connectToLocalHost();   // You should run a regtest mode bitcoind locally.
-        }
+        //if (params == RegTestParams.get()) {
+            //bitcoin.connectToLocalHost();   // You should run a regtest mode bitcoind locally.
+        //}
         bitcoin.setDownloadListener(controller.progressBarUpdater())
                .setBlockingStartup(false)
                .setUserAgent(APP_NAME, "1.0");

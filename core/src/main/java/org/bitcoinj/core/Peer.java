@@ -1632,6 +1632,9 @@ public class Peer extends PeerSocketHandler {
         // client-mode node, nor should it be unconnected. If that happens it means the user overrode us somewhere or
         // there is a bug in the peer management code.
         checkState(params.allowEmptyPeerChain() || chainHeight > 0, "Connected to peer with zero/negative chain height", chainHeight);
+
+        log.warn(String.valueOf(chainHeight));
+        log.warn(String.valueOf(blockChain.getBestChainHeight()));
         return chainHeight - blockChain.getBestChainHeight();
     }
 
