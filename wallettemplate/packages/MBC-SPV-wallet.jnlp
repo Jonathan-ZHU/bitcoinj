@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="MBC-SPV-wallet.jnlp">
+  <information>
+    <title>MBC-SPV-wallet</title>
+    <vendor>Unknown</vendor>
+    <description>MBC-SPV-wallet</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="wallettemplate-shaded.jar" size="8340835" download="null" />
+  </resources>
+  <jfx:javafx-desc  width="0" height="0" main-class="wallettemplate.Main"  name="MBC-SPV-wallet" />
+  <update check="background"/>
+</jnlp>

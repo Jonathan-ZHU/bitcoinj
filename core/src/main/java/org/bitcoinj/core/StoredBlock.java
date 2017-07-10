@@ -16,7 +16,6 @@
 
 package org.bitcoinj.core;
 
-import jdk.internal.instrumentation.Logger;
 import org.bitcoinj.store.BlockStore;
 import org.bitcoinj.store.BlockStoreException;
 import com.google.common.base.Objects;
